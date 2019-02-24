@@ -1,0 +1,84 @@
+.main{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.main .title{
+    display: flex;
+    width: 100%;
+}
+
+.main .search{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 30px;
+}
+
+.main .search .input{
+    height: 100%;
+    width: 80%;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    border: none;
+}
+
+.main .search .btn{
+    height: 100%;
+    width: 20%;
+    padding: 0 0 0 0;
+    margin-left: 20px;
+    background: #01468a;
+    border: none;
+    color: white;
+}
+
+.list{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.list .good{
+    margin-bottom: 10px;
+    display: flex;
+    height: 200px;
+    width: 100%;
+    background: white;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.list .good .img{
+    display: inline-flex;
+    width : 20%;
+    height: 90%;
+}
+
+.list .good .name{
+    display: flex;
+    color: #01468a;
+    width: 30%;
+}
+
+.list .good .id{
+    display: flex;
+    color: #01468a;
+    width: 10%;
+}
+
+.list .good .select{
+    display: flex;
+}
+
+.back{
+    display: flex;
+    text-decoration: none;
+    color: #cccccc;
+    align-self: flex-end;
+    font-size: 20px;
+    background: #292929;
+    padding: 8px 8px 8px 8px;
+}

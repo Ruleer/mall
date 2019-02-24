@@ -1,0 +1,53 @@
+body{
+    margin: 0 0 0 0;
+    background: #eeeeee;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1226px;
+    max-width: 1226px;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.top{
+    display: flex;
+    background: white;
+    height: 150px;
+    min-width: 1226px;
+    flex-shrink: 0;
+}
+
+.top .top-contain{
+    height: 100%;
+    background: white;
+}
+
+.top .left{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.top .logo{
+    height: 50%;
+
+}
+
+.top .title{
+    font-size: 60px;
+    color: #01468a;
+    margin-left: 40px;
+}
+
+.top .user{
+    display: flex;
+    font-size: 20px;
+    color: #7e7e7e;
+    width: 10%;
+    justify-content: space-between;
+}

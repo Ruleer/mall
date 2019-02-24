@@ -1,0 +1,61 @@
+.main{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 50px;
+}
+
+.main .item{
+    display: flex;
+    width: 60%;
+    margin-top: 30px;
+    height: 50px;
+    align-items: center;
+}
+
+.main .item .title{
+    display: flex;
+    width: 20%;
+    color: #01468a;
+}
+
+.main .item .input{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    outline: none;
+}
+
+.main .id .input{
+    background: #acabab;
+}
+
+.main .introduction{
+    height: 100px;
+}
+
+.main .introduction .input{
+    resize: none;
+}
+
+.main .btn{
+    border: none;
+    margin-top: 30px;
+    background: #01468a;
+    color: white;
+    width: 30%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.back{
+    display: flex;
+    text-decoration: none;
+    color: #cccccc;
+    align-self: flex-end;
+    font-size: 20px;
+    background: #292929;
+    padding: 8px 8px 8px 8px;
+}

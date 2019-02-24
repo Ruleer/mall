@@ -1,0 +1,154 @@
+body{
+    display: flex;
+    justify-content: center;
+    background: #eeeeee;
+    margin: 0 0 0 0;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: white;
+}
+
+.container-a{
+    display: flex;
+    width: 80%;
+}
+
+.container-b{
+    display: flex;
+    width: 99%;
+    min-width: 1226px;
+    max-width: 1226px;
+}
+
+.top{
+    display: flex;
+    height: 100px;
+    margin-top: 20px;
+    width: 80%;
+    align-items: center;
+}
+
+.top .logo{
+    display: inline-flex;
+    height: 100%;
+}
+
+.top .name{
+    display: inline-flex;
+    font-size: 50px;
+    color: #01468a;
+    margin-left: 3%;
+    letter-spacing: 6px;
+}
+
+.middle{
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+    margin-top: 20px;
+    width: 100%;
+    background: white;
+}
+
+.middle .ad{
+    display: inline-flex;
+    width: 65%;
+    
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.middle .log{
+    margin-left: 30px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-right: 30px;
+}
+
+.middle .log .title{
+    font-size: 35px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #01468a;
+}
+
+
+.middle .input-1,
+.middle .input-2{
+    display: flex;
+    width: 100%;
+    height: 8%;
+    border: 1px solid #e0e0e0;
+    color: #e0e0e0;
+}
+
+.middle .input-1{
+    margin-top: 20px;
+}
+
+.middle .input-2{
+    margin-top: 10px;
+}
+
+.middle .input-1 .username,
+.middle .input-2 .password{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+.middle .btn{
+    margin-top: 20px;
+    height: 10%;
+    width: 100%;
+    background-color: #01468a;
+    color: #f2f2f2;
+    outline: none;
+    border: 0;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+}
+
+.middle .btn:hover{
+    background-color: #00274f;
+}
+
+.middle .register{
+    text-decoration: none;
+    color: #7c7c7c;
+    margin-top: 10px;
+    transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+}
+
+.middle .register:hover{
+    color: #303030;
+}
+
+.buttom{
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    height: 100px;
+}
+
+.buttom .title{
+    display: flex;
+    color: #01468a;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 15px;
+}
+

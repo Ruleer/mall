@@ -1,0 +1,141 @@
+body{
+    margin: 0 0 0 0;
+    background: #eeeeee;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.navbar{
+    background:#404040;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.navbar .left,
+.navbar .center,
+.navbar .right{
+    display: flex;
+}
+
+.navbar .left{
+    text-align: center;
+    justify-content: flex-start;
+}
+
+.navbar .left .logo{
+    display: flex;
+    text-decoration: none;
+    color: #d9d9d9;
+}
+
+.navbar .left .logo:hover{
+    color: white;
+}
+
+.navbar .center{
+    width: 40%;
+    height: 65%; 
+    left: 30%;
+    margin-left: 15%;
+}
+
+.navbar .center .search{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    
+}
+
+.navbar .center .input{
+    display: flex;
+    border: 0;
+    outline: 0;
+}
+
+.navbar .center .input{
+    width: 78%;
+    background: #f2f2f2;
+}
+
+.navbar .center .btn{
+    width: 20%;
+    text-align: center;
+    color: #f2f2f2;
+    background: #a6a6a6;
+    border: 0;
+    outline: 0;
+}
+
+.navbar .center .btn:hover{
+    color: white;
+    background: #7c7c7c;
+}
+
+.navbar .right{
+    width: 30%;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.navbar .right .logtext{
+    text-decoration: none;
+    color: #d9d9d9;
+    margin-right:20px; 
+    text-align: center;
+}
+
+.navbar .right .logtext:hover{
+    color: white;
+}
+
+.navbar .right .topword{
+    text-decoration: none;
+    color: #d9d9d9;
+    margin-right:20px; 
+    text-align: center;
+}
+
+.navbar .right .topword:hover{
+    color: white;
+}
+
+.navbar .right .car{
+    width: 50%;
+    background: #595959;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.navbar .right .car:hover{
+    background-color: #4f4f4f;
+}
+
+.navbar .right .logtext,
+.navbar .right .car{
+    display: inline-flex;
+}
+
+.navbar .right .car .car-text{
+    display: flex;
+    text-decoration: none;
+    color: #d9d9d9;
+}
+
+.navbar .right .car .car-text:hover{
+    color: white;
+}

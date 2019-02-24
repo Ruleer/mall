@@ -1,0 +1,219 @@
+.middle{
+    display: flex;
+    margin-top: 20px;
+}
+
+.middle .mid-container{
+    flex-direction: column;
+}
+
+.warning{
+    display: flex;
+    background: white;
+    font-size: 20px;
+    color: #01468a;
+    width: 80%;
+    height: 50px;
+    padding-top: 20px;
+    padding-left: 50px;
+    margin-top: 40px;
+}
+
+.middle .good-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background: white;
+}
+
+.middle .good{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    margin-top: 3px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: white;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0 0 0 0;
+}
+
+.select{
+    width: 2.5%;
+    height: 30%;
+    margin: 0 3.75% 0 3.75%;
+    background: url(/img/unselect.png) no-repeat 0 0;
+}
+
+.good-head .select{
+    margin: 0 0 0 0;
+    width: 10%;
+    background: none;
+    border: none;
+}
+
+.good .select-btn{
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+.img{
+    width: 20%;
+}
+
+.name{
+    width: 20%;
+}
+
+.one-price{
+    width: 15%;
+}
+
+.middle .num{
+    width: 10%;
+    height: 40%;
+    border: 2px solid #747474;
+}
+
+.good-head .num{
+    border: none;
+}
+
+.all-price{
+    width: 10%;
+}
+
+.delete{
+    width: 10%;
+}
+
+.middle .down{
+    width: 20%;
+    border: none;
+    background: white;
+    color: #464646;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.middle .input{
+    display: flex;
+    padding-left: 10px;
+    width: 40%;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.middle .input::-webkit-outer-spin-button,
+.middle .input::-webkit-inner-spin-button{
+	-webkit-appearance: none !important;
+	margin: 0;
+}
+
+.middle .add{
+    width: 20%;
+    border: none;
+    background: white;
+    color: #464646;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.good .picture{
+    height: 100%;
+}
+
+.good .btn{
+    background: #01468a;
+    border: none;
+    height: 30%;
+    color: white;
+}
+
+.sum{
+    height: 70px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin-top: 30px;
+}
+
+.sum .left,
+.sum .right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.sum .right{
+    justify-content: flex-end;
+}
+
+.sum .word{
+    display: flex;
+}
+
+.sum .pay{
+    height: 100%;
+    width: 25%;
+    background: #01468a;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}
+
+.sum .word-pay{
+    display: flex;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.sum .word-1,
+.sum .word-2,
+.sum .word-3{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sum .word-4,
+.sum .word-5{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.sum .word-1{
+    margin-left: 20px;
+}
+
+.sum .num{
+    color: #01468a;
+    margin: 0 2px 0 2px;
+}
+
+.sum .num-all,
+.sum .num-select{
+    font-size: 25px;
+}
+
+.sum .num-price{
+    font-size: 35px;
+    margin-right: 20px;
+}
