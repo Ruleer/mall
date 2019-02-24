@@ -35,8 +35,7 @@ var car = $(".car")[0];
 car.onclick = function(){
     if(searchCookie("username") == undefined){
         alert("请先登入哦");
-    }else{
-        
+    }else{   
         window.location.href = "shoppingCar.html";
     }
     
