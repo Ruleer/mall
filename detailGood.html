@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情页</title>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    <script src="/quit.js"></script>
+    <link rel="stylesheet" href="css/head2.css">
+    <link rel="stylesheet" href="css/detailGood.css">
+</head>
+<body>
+    <div class="navbar">
+    <div class="container">
+        <div class="left">
+            <a class="logo" href="/main.html">仙女商城</a>
+        </div>
+        <div class="center">
+            <div class="search">
+                <input class="input" type="text">
+                <button class="btn">搜索</button>
+            </div>
+        </div>
+        <div class="right">
+            <a class="logtext topword" href="/login.html">登入</a>
+            <a class="username topword">&&&&</a>
+            <a class="logtext topword" href="/register.html">注册</a>
+            <a class="out topword" href="/main.html">退出</a>
+            <div class="car">
+                <a class="car-text">我的购物车</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="main">
+    <div class="main-container container">
+        <div class="main-left">
+            <img class="img"> 
+        </div>
+        <div class="main-right">
+            <h2 class="title"></h2>
+            <h3 class="introduction"></h3>
+            <h2 class="price"></h2>
+            <div class="number">
+                <button class="add">+</button>
+                <input class="num" type="number" value="1">
+                <button class="down">-</button>
+            </div>
+            <button class="to-car">加入购物车</button>
+        </div>
+    </div>
+    </div>
+    <script src="/jsWhenOpen2.js"></script>
+    <script>
+        //显示商品
+        $.ajax({
+            type:"get",
+            url:"php_files/search2.php",
+            data:"productid="+searchCookie("code"),
+            success:function(msg){
+                //console.log(msg);
+                goodInformation = JSON.parse(msg);
+                //console.log(goodInformation);
+                $(".title")[0].innerHTML = goodInformation.productname;
+                $(".introduction")[0].innerHTML = goodInformation.introduction;
+                $(".price")[0].innerHTML = goodInformation.price;
+                $(".main .img")[0].src = goodInformation.imageway;
+                $(".to-car")[0].code = goodInformation.productid;
+
+                //数量改变
+                $(".down").click(function(){
+                    console.log(this.parentNode.childNodes[3].value);
+                    if(this.parentNode.childNodes[3].value === "1"){
+                        
+                    }
+                    else{
+                        this.parentNode.childNodes[3].value--;
+                        //var radio = $(".select-btn");
+                        //console.log(this.parentNode.childNodes[1].value);
+                        
+                        
+                    }
+                })
+                $(".add").click(function(){
+                    console.log(this.parentNode.childNodes[3].value);
+                        this.parentNode.childNodes[3].value++;
+                        //var radio = $(".select-btn");
+                        
+                        
+                    }
+                )
+
+
+
+                //加入购物车
+                //console.log($(".number .num").val());
+                $(".to-car").click(function (){
+                    for(var t=0;t<parseInt($(".number .num").val());t++){
+                        $.ajax({
+                        type:"get",
+                        url:"php_files/insert_cart.php",
+                        data:"productid="+this.code,
+                        success:function(msg){
+                            console.log(msg);
+                        },
+                        error:function(xml){
+                            console.log(xml.status);
+                        }
+                    })
+                    }
+                    //console.log(this.parentNode.getAttribute("code"));
+                    
+                })
+            },
+            error:function(xml){
+                console.log(xml.status);
+            },
+        })
+    </script>
+</body>
+</html>

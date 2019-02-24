@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/adminCenter.css">
+    <link rel="stylesheet" href="/css/head1.css">
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/quit.js"></script>
+    <title>管理员控制台</title>
+</head>
+<body>
+    <div class="top">
+    <div class="top-contain container">
+        <div class="left">
+            <img class="logo1 logo" src="/img/logo.png">
+            <!--<img class="logo2 logo" src="img/home2.png">-->
+            <div class="title">管理员控制台</div>
+        </div>
+        <div class="user">
+            <div class="word username">&&&&</div>
+            <div class="word out">退出</div>
+        </div>
+         
+    </div>
+    </div>
+
+    <div class="main">
+    <div class="main-contain container">
+        <div class="command add">
+            <img class="img" src="/img/add.png">
+            <a class="text">增加商品</a>
+        </div>
+        <div class="command change">
+            <img class="img" src="/img/change.png">
+            <a class="text">修改商品</a>
+        </div>
+        <div class="command delete">
+            <img class="img" src="/img/delete.png">
+            <a class="text">删除商品</a>
+        </div>
+    </div>
+    </div>
+    <script src="/jsWhenOpen.js"></script>
+    <script>
+        $.ajax({
+            type:"get",
+            url:"php_files/session.php",
+            success:function(msg){
+                if(msg === "这是管理员"){
+                    
+                }
+                else{
+                    alert("您没有管理员权限哦！");
+                    window.location.href = "/main.html";
+                }
+            },
+            error:function(xml){
+                console.log(xml);
+            },
+        })
+
+        $(".add").click(function(){
+            window.location.href = "/addGood.html";
+        });
+        $(".change").click(function(){
+            window.location.href = "/changeGoodSearch.html";
+        });
+        $(".delete").click(function(){
+            window.location.href = "/deleteGood.html";
+        });
+    </script>
+</body>
+</html>

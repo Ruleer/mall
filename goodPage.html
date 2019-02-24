@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索结果</title>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    <script src="/goodList.js"></script>
+    <script src="/createPage.js"></script>
+    <link rel="stylesheet" href="/css/head2.css">
+    <link rel="stylesheet" href="/css/goodPage.css">
+</head>
+<body>
+    <div class="navbar">
+    <div class="container">
+        <div class="left">
+            <a class="logo" href="/main.html">仙女商城</a>
+        </div>
+        <div class="center">
+            <div class="search">
+                <input class="input" type="text">
+                <button class="btn">搜索</button>
+            </div>
+        </div>
+        <div class="right">
+            <a class="logtext topword" href="/login.html">登入</a>
+            <a class="username topword">&&&&</a>
+            <a class="logtext topword" href="/register.html">注册</a>
+            <a class="out topword" href="/main.html">退出</a>
+            <div class="car">
+                <a class="car-text" href="#">我的购物车</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="title container">
+        <h1 class="result">搜索结果</h1>
+    </div>
+
+    <div class="goodlist">
+    <div class="good-container container">
+        <!--
+        <div class="good">
+            <div class="add">加入购物车</div>
+            <img class="img" src="/product_image/双面羊绒大衣.jpg">
+            <div class="name">商品名称</div>
+            <div class="prise">
+                <div class="prise-num">998</div>
+                <div class="prise-word">元</div>
+            </div>
+            <span class="introduction">
+                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+            </span>
+        </div>-->
+
+    
+
+    </div>
+    </div>
+
+    <div class="page">
+    <div class="container page-container">
+        <!--<button class="pagebtn page-1">1</button>
+        <button class="pagebtn page-2">2</button>
+        <button class="pagebtn page-3">3</button>
+        <button class="pagebtn page-4">4</button>-->
+    </div>
+    </div>
+
+    <div class="bottom">
+    <div class="container">
+
+    </div>
+    </div>
+
+    <script src="/jsWhenOpen2.js"></script>
+    <script>
+
+        //获取当前页数
+        var pagenum = searchCookie("pageSearch");
+        //console.log(pagenum); 
+
+        //根据关键字查询商品
+        function searchGood(){
+            $.ajax({
+            type:"get",
+            url:"php_files/search.php",
+            data:"keywords="+searchCookie("keyword")+"&page="+pagenum,
+            success:function(msg){
+                console.log(msg);
+                //无搜索结果
+                if(msg === "none"){
+                var warning = document.createElement("div");
+                warning.className = "warning";
+                warning.innerHTML = "未找到该商品，请重新搜索";
+                $(".good-container")[0].appendChild(warning);
+                //window.location.href = "/main.html";
+                }
+                //搜索结果处理
+                var searchData = msg.split("</br>");
+                //console.log(searchData);
+                for(var i=0;i<searchData.length-1;i++){
+                    goodInformation = JSON.parse(searchData[i]);
+                    console.log(goodInformation);
+                    listGood();
+                }
+                $(".img").click(function(){
+                    addCookie("code",this.code);
+                    window.open("detailGood.html");
+                });
+                $(".name").click(function(){
+                    addCookie("code",this.code);
+                    window.open("detailGood.html");
+                })
+            },
+            error:function(xml){
+                console.log(xml.status);
+            }
+        });
+        }
+
+        searchGood();
+
+        //总页数
+        var totalPage;
+        $.ajax({
+            type:"get",
+            url:"php_files/search_totalpage.php",
+            data:"keywords="+searchCookie("keyword"),
+            success:function(msg){
+                totalPage = parseInt(msg);
+                //创建分页
+                //console.log(totalPage);
+                createPage(totalPage);
+                //console.log($(".page-"+pagenum)[0]);
+                $(".page-"+pagenum).addClass("focus");
+                $(".pagebtn").click(function(){
+                    addCookie("page",this.innerHTML)
+                    //console.log(this.innerHTML);
+                    pagenum = parseInt(this.innerHTML);
+                    $(".good-container").html("");
+                    $(".pagebtn").removeClass("focus");
+                    searchGood();
+                    $(".page-"+pagenum).addClass("focus");
+                    
+                })
+            },
+            error:function(xml){
+                console.log(xml.status);
+            },
+        })
+        
+    </script>
+</body>
+</html>

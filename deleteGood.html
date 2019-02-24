@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="/css/head1.css">
+    <link rel="stylesheet" href="/css/deleteGood.css">
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    
+    <title>删除商品</title>
+</head>
+<body>
+    <div class="top">
+    <div class="top-contain container">
+        <div class="left">
+            <img class="logo1 logo" src="/img/logo.png">
+            <!--<img class="logo2 logo" src="img/home2.png">-->
+            <div class="title">删除商品</div>
+        </div>
+        <div class="user">
+            <div class="word username">&&&&</div>
+            <div class="word out">退出</div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="progress">
+        <img>
+    </div>
+
+    <div class="main container">
+        <h1 class="title">请输入要删除的商品名称或ID</h1>
+        <div class="search">
+            <input type="text" class="input">
+            <button class="btn">搜索</button>
+        </div>
+    </div>
+
+    <div class="list container">
+        <!--<div class="good">
+            <img class="img" src="/product_image/双面羊绒大衣.jpg">
+            <h3 class="name">商品名称</h3>
+            <h4 class="select">选择</h4>
+        </div>-->
+        
+    </div>
+
+    <div class="container">
+        <a href="/adminControlCenter.html" class="back">返回</a>
+    </div>
+
+    <script src="/jsWhenOpen.js"></script>
+    <script>
+        var btn = $(".btn")[0];
+        //console.log(btn);
+        btn.onclick = function (){
+            $(".list").html("");
+            var text = $(".input")[0].value;
+            //console.log(text);
+            if(isNaN(text)){
+                //console.log("text");
+                var returnMsg;
+                var i=0;
+                $.ajax({
+                    type:"GET",
+                    url:"php_files/search1.php",
+                    data:{
+                        "keywords" : text,
+                    },
+                    success:function(msg){
+                        if(msg === "none"){
+                            alert("未找到相关商品，请重新输入");
+                        }
+                        returnMsg = msg;
+                        // console.log(returnMsg);
+                        var data = returnMsg.split("&");
+                        data = data.slice(0,data.length-1);
+                        //console.log(data);
+                        //addCookie("search",data);
+                        for(i=0;i<data.length;i++){
+                            $.ajax({
+                                type:"GET",
+                                url:"php_files/search2.php",
+                                data:"productid="+data[i],
+                                success:function(msg){
+                                    goodInformation = JSON.parse(msg);
+                                    //console.log(goodInformation);
+                                    //return goodInformation;
+                                    var div = document.createElement("div");
+                                    var img = document.createElement("img");
+                                    //var id = document.createElement("h3")
+                                    var name = document.createElement("h3");
+                                    var select = document.createElement("h4");
+                                    div.className = "good";
+                                    img.className = "img";
+                                    //id.className = "id";
+                                    name.className = "name";
+                                    select.className = "select";
+                                    img.src = goodInformation.imageway;
+                                    //id.innerHTML = goodInformation.productid;
+                                    name.innerHTML = goodInformation.productname;
+                                    select.innerHTML = "删除";
+                                    select.onclick = function (){
+                                        $.ajax({
+                                            type:"get",
+                                            url:"/php_files/delete_product.php",
+                                            data:"productid="+goodInformation.productid,
+                                            success:function(msg){
+                                                alert(msg);
+                                                window.location.href = "/adminControlCenter.html";
+                                            },
+                                            error:function(xml){
+                                                console.log(xml.status);
+                                            }
+                                        })
+                                    }
+                                    div.appendChild(img);
+                                    div.appendChild(name);
+                                    div.appendChild(select);
+                                    $(".list")[0].appendChild(div);
+                                },
+                                error:function(xml){
+                                    console.log(xml.status);
+                                },
+                            })
+                        }
+                    },
+                    error:function(xml){
+                        console.log(xml.status);
+                    },
+            })
+            }else{
+                //console.log("num");
+                $.ajax({
+                    type:"GET",
+                    url:"php_files/search2.php",
+                    data:"productid="+text,
+                    success:function(msg){
+                        //console.log(msg);
+                        if(msg === "none"){
+                            alert("未找到相关商品，请重新输入");
+                        }
+                        goodInformation = JSON.parse(msg);
+                        //console.log(goodInformation);
+                        //return goodInformation;
+                        var div = document.createElement("div");
+                        var img = document.createElement("img");
+                        //var id = document.createElement("h3")
+                        var name = document.createElement("h3");
+                        var select = document.createElement("h4");
+                        div.className = "good";
+                        img.className = "img";
+                        //id.className = "id";
+                        name.className = "name";
+                        select.className = "select";
+                        img.src = goodInformation.imageway;
+                        //id.innerHTML = text;
+                        name.innerHTML = goodInformation.productname;
+                        select.innerHTML = "选择";
+                        select.onclick = function (){
+                            //console.log(this.parentNode.childNodes[1].innerHTML);
+                            addCookie("resultID",text);
+                            window.location.href = "changeGoodChange.html";
+                        }
+                        div.appendChild(img);
+                        //div.appendChild(id);
+                        div.appendChild(name);
+                        div.appendChild(select);
+                        $(".list")[0].appendChild(div);
+                        
+                    },
+                    error:function(xml){
+                        console.log(xml.status);
+                    },
+                })
+            }
+        }
+    </script>
+</body>
+</html>

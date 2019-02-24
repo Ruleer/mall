@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/addgood.css">
+    <link rel="stylesheet" href="/css/head1.css">
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    <title>增加商品</title>
+</head>
+<body>
+    <div class="top">
+    <div class="top-contain container">
+        <div class="left">
+            <img class="logo1 logo" src="/img/logo.png">
+            <!--<img class="logo2 logo" src="img/home2.png">-->
+            <div class="title">增加商品</div>
+        </div>
+        <div class="user">
+            <div class="word username">&&&&</div>
+            <div class="word out">退出</div>
+        </div>
+    </div>
+    </div>
+
+    <div class="middle">
+    <div class="container">
+        <div class="ifo name">
+            <h3 class="title">商品名称</h3>
+            <input class="input" type="text">
+        </div>
+        <div class="ifo price">
+            <h3 class="title">商品价格</h3>
+            <input  class="input" type="number">
+        </div>
+        <div class="ifo type">
+            <h3 class="title">商品类别</h3>
+            <select class="input" name="sortid">
+                <option value="1">男装女装</option>
+                <option value="2">鞋靴箱包</option>
+                <option value="3">珠宝手表</option>
+                <option value="4">家用电器</option>
+                <option value="5">生鲜水果</option>
+                <option value="6">图书音像</option>
+            </select>
+        </div>
+        <div class="ifo introduction">
+            <h3 class="title">商品简介</h3>
+            <textarea class="input">输入介绍</textarea>
+        </div>
+        <div class="photo ifo">
+            <h3 class="title">上传图片</h3>
+            <div class="load">
+                <input type="file" class="input" accept="image/*" id="img_input">
+                <label for="img_input" class="input-text">
+                    选择文件
+                </label>
+            </div>
+            <div class="preview"></div>
+        </div>
+        <button class="ifo add">提交</button>
+        <a href="/adminControlCenter.html" class="back">返回</a>
+    </div>
+    </div>
+        
+    <script src="/jsWhenOpen.js"></script>
+    <script>
+        //上传图片预览
+        //console.log($("#img_input"));
+        
+        $("#img_input").on("change",function(sth){
+            //console.log(sth.target.value);
+            //console.log(sth.target.files[0]);
+            var img = sth.target.files[0];
+            if(!img.type.match('image.*')){
+                alert("请上传图片文件");
+                sth.target.value = "";
+            }
+            var loading = new FileReader();
+            loading.readAsDataURL(img);
+            loading.onload = function(arg) {
+            var photo = '<img class="imagine" src="' + arg.target.result + '" alt="preview"/>';
+            $(".preview").empty().append(photo);
+            //console.log(loading.readAsDataURL(img));
+}
+        })
+
+        //提交数据
+        var btn = $(".add")[0];
+        //console.log(btn);
+        btn.onclick = function (){
+            var sbj = $(".input");
+            var data = new FormData();
+            //console.log(sbj);
+            data.append("productname",sbj[0].value);
+            data.append("price",sbj[1].value);
+            data.append("sortid",sbj[2].value);
+            data.append("introduction",sbj[3].value),
+            data.append("image",sbj[4].files[0]);
+            //console.log(name);
+            //console.log(type);
+            //console.log(introduction);
+            $.ajax({
+                type : "post",
+                url : "php_files/insert_procheck.php",
+                processData: false,
+                contentType: false,
+                datatype : "json",
+                data : data,
+                success : function (msg){
+                    alert(msg);
+                    window.location.href = "/adminControlCenter.html"
+                },
+                error : function (params) {
+                    console.log(params.status);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

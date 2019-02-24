@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/head1.css">
+    <link rel="stylesheet" href="/css/changeGoodChange.css">
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    
+    <title>修改商品</title>
+</head>
+<body>
+    <div class="top">
+    <div class="top-contain container">
+        <div class="left">
+            <img class="logo1 logo" src="/img/logo.png">
+            <!--<img class="logo2 logo" src="img/home2.png">-->
+            <div class="title">修改商品</div>
+        </div>
+        <div class="user">
+            <div class="word username">&&&&</div>
+            <div class="word out">退出</div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="main container">
+        <div class="item id">
+            <h3 class="title">商品ID</h3>
+            <input class="input" readonly="" type="number">
+        </div>
+        <div class="item name">
+            <h3 class="title">商品名称</h3>
+            <input class="input" type="text">
+        </div>
+        <div class="item price">
+            <h3 class="title">商品价格</h3>
+            <input class="input" type="number">
+        </div>
+        <div class="item introduction">
+            <h3 class="title">商品简介</h3>
+            <textarea class="input"></textarea>
+        </div>
+        <button class="btn">确定修改</button>
+        <a href="/changeGoodSearch.html" class="back">返回</a>
+    </div>
+
+
+    <script src="/jsWhenOpen.js"></script>
+
+    <script>
+        var resultID = searchCookie("resultID");
+        console.log(resultID);
+        var goodInformation;
+        var input = $(".input");
+        //console.log(input);
+        $.ajax({
+            type:"GET",
+            url:"php_files/search2.php",
+            data:"productid="+resultID,
+            success:function(msg){
+                //console.log(msg);
+                goodInformation = JSON.parse(msg);
+                //console.log(goodInformation);
+                input[0].value = resultID;
+                input[1].value = goodInformation.productname;
+                input[2].value = goodInformation.price;
+                input[3].value = goodInformation.introduction;
+            },
+            error:function(xml){
+                console.log(xml.status);
+            },
+        })
+        $(".btn")[0].onclick = function(){
+            var input = $(".input");
+            $.ajax({
+                type:"get",
+                url:"/php_files/update_product.php",
+                data:{
+                    "productid" : resultID,
+                    "updatename" : input[1].value,
+                    "updateintroduction" : input[3].value,
+                    "updateprice" : input[2].value
+                },
+                success:function(msg){
+                    console.log(msg);
+                },
+                error:function(xml){
+                    console.log(xml.status);
+                }
+            })
+        }
+        
+    </script>
+</body>
+</html>

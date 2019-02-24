@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/head2.css">
+    <title>商城制作中······</title>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/myCookie.js"></script>
+    <script src="/search.js"></script>
+    <script src="/quit.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+    <div class="container">
+        <div class="left">
+            <a class="logo" href="#">仙女商城</a>
+        </div>
+        <div class="center">
+            <div class="search">
+                <input class="input" type="text">
+                <button class="btn">搜索</button>
+            </div>
+        </div>
+        <div class="right">
+            <a class="logtext topword" href="/login.html">登入</a>
+            <a class="username topword">&&&&</a>
+            <a class="logtext topword" href="/register.html">注册</a>
+            <a class="out topword" href="/main.html">退出</a>
+            <div class="car">
+                <a class="car-text">我的购物车</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="classfield">
+    <div class="container">
+        <img src="img/logo.png" class="logo-photo">
+        <div class="section">
+            <div class="section-a" sort="1">
+                <a class="section-word" href="#">男装女装</a>
+            </div>
+            <div class="section-a" sort="2">
+                <a class="section-word" href="#">鞋靴箱帽</a>
+            </div>
+            <div class="section-a" sort="3">
+                <a class="section-word" href="#">珠宝手表</a>
+            </div>
+            <div class="section-a" sort="4">
+                <a class="section-word" href="#">家用电器</a>
+            </div>
+            <div class="section-a" sort="5">
+                <a class="section-word" href="#">生鲜水果</a>
+            </div>
+            <div class="section-a" sort="6">
+                <a class="section-word" href="#">图书音像</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="ad">
+    <div class="container">
+        <!--<div class="left">
+            <div class="ad-section">
+                <a class="ad-word" href="#">买买买买买</a>
+            </div>
+            <div class="ad-section">
+                <a class="ad-word" href="#">买买买买买</a>
+            </div>
+            <div class="ad-section">
+                <a class="ad-word" href="#">买买买买买</a>
+            </div>
+            <div class="ad-section">
+                <a class="ad-word" href="#">买买买买买</a>
+            </div>
+            <div class="ad-section">
+                <a class="ad-word" href="#">买买买买买</a>
+            </div>
+        </div>-->
+        <div class="right">
+            <img src="img/ad0.jpg" class="change-pho">
+        </div>
+    </div>
+    </div>
+
+    <div class="sec-ad">
+    <div class="container">
+        <div class="ad-a section">
+            <img src="/img/ad1.jpg" class="ad-pho ad-1">
+        </div>
+        <div class="ad-b section">
+            <img src="/img/ad2.jpg" class="ad-pho ad-2">
+        </div>
+        <div class="ad-c section">
+            <img src="/img/ad4.jpg" class="ad-pho ad-3">
+        </div>
+        <div class="ad-d section">
+            <img src="/img/奥迪.jpg" class="ad-pho ad-4">
+        </div>
+    </div>
+    </div>
+
+    <div class="thi-ad">
+    <div class="container">
+        <img src="/img/ad5l.jpg" class="small-ad">
+    </div>
+    </div>
+
+    <div class="detialed-a">
+    <div class="arrange container">
+        <div class="title">
+            女装男装
+        </div>
+        <div class="section">
+            <img src="/img/100x100.png" class="photo">
+            <img src="/img/100x100.png" class="photo">
+            <img src="/img/100x100.png" class="photo">
+            <img src="/img/100x100.png" class="photo">
+        </div>
+    </div>
+    </div>
+
+    <div class="detialed-b">
+        <div class="arrange container">
+            <div class="title">
+                箱靴鞋帽
+            </div>
+            <div class="section">
+                <img src="/img/100x100.png" class="photo">
+                <img src="/img/100x100.png" class="photo">
+                <img src="/img/100x100.png" class="photo">
+                <img src="/img/100x100.png" class="photo">
+            </div>
+        </div>
+    </div>
+    <script src="/jsWhenOpen2.js"></script>
+    <script>
+        //进入分类
+        $(".section-a").click(function (){
+            addCookie("sort",this.getAttribute("sort"));
+            //console.log(this.childNodes[1].innerHTML);
+            addCookie("sortName",this.childNodes[1].innerHTML);
+            addCookie("pageSort",1);
+            window.open("sortGood.html");
+        })
+        //console.log(searchCookie("username"));
+        //跳转个人中心
+        user.onclick = function (){
+            window.location.href = "personalCenter.html";
+        }
+
+        
+    </script>
+</body>
+</html>
