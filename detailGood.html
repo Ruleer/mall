@@ -68,7 +68,7 @@
                 //console.log(goodInformation);
                 $(".title")[0].innerHTML = goodInformation.productname;
                 $(".introduction")[0].innerHTML = goodInformation.introduction;
-                $(".price")[0].innerHTML = goodInformation.price;
+                $(".price")[0].innerHTML = goodInformation.price + "元";
                 $(".main .img")[0].src = goodInformation.imageway;
                 $(".to-car")[0].code = goodInformation.productid;
 
@@ -113,6 +113,7 @@
                         }
                     })
                     }
+                    alert("成功加入购物车"+$(".number .num").val()+"件");
                     //console.log(this.parentNode.getAttribute("code"));
                     
                 })

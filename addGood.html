@@ -112,7 +112,10 @@
                 data : data,
                 success : function (msg){
                     alert(msg);
-                    window.location.href = "/adminControlCenter.html"
+                    if(msg === "添加商品成功！")
+                        window.location.href = "/adminControlCenter.html";
+                    else
+                        window.location.reload(true);
                 },
                 error : function (params) {
                     console.log(params.status);
